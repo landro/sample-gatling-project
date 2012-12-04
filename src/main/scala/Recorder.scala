@@ -1,10 +1,11 @@
 import com.excilys.ebi.gatling.core.util.PathHelper.path2string
-import com.excilys.ebi.gatling.recorder.configuration.CommandLineOptionsConstants.{ REQUEST_BODIES_FOLDER_OPTION, PACKAGE_OPTION, OUTPUT_FOLDER_OPTION }
-import com.excilys.ebi.gatling.recorder.ui.GatlingHttpProxyUI
-
-import IDEPathHelper.{ requestBodiesFolder, recorderOutputFolder }
+import com.excilys.ebi.gatling.recorder.config.RecorderOptions
+import com.excilys.ebi.gatling.recorder.controller.RecorderController
 
 object Recorder extends App {
 
-	GatlingHttpProxyUI.main(Array(OUTPUT_FOLDER_OPTION, recorderOutputFolder, PACKAGE_OPTION, "no.bekk.boss", REQUEST_BODIES_FOLDER_OPTION, requestBodiesFolder))
+	RecorderController(new RecorderOptions(
+		outputFolder = Some(IDEPathHelper.recorderOutputDirectory),
+		simulationPackage = Some("no.bekk.boss"),
+		requestBodiesFolder = Some(IDEPathHelper.requestBodiesDirectory)))
 }

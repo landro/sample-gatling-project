@@ -8,11 +8,12 @@
 	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
 			<pattern>%d{HH:mm:ss.SSS} [%-5level] %logger{15} - %msg%n%rEx</pattern>
+			<immediateFlush>false</immediateFlush>
 		</encoder>
 	</appender>
 
 	<!-- Uncomment for logging HTTP responses on check failure -->
-	<!-- <logger name="com.excilys.ebi.gatling.http.ahc.GatlingAsyncHandler" level="DEBUG" /> -->
+	<!-- <logger name="com.excilys.ebi.gatling.http.ahc.GatlingAsyncHandlerActor" level="DEBUG" /> -->
 
 	<root level="WARN">
 		<appender-ref ref="CONSOLE" />
